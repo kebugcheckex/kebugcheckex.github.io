@@ -10,11 +10,14 @@ My technology stack covers the following areas:
   * Power System Engineering
   * Electric Machinery
   * Control Systems
-2. Multimedia technology
+  * Microelectronics
+  * Computer Architecture
+2. Multimedia Technology
   * Image Processing
   * Computer Vision
-  * Voice Recognition
+  * Speech Recognition
   * Video Coding
+  * Data Compression
 3. DevOps
   * Linux Server Administration
   * Shell Programming
