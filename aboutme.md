@@ -4,20 +4,6 @@ title: About me
 subtitle: This is the unknown zone.
 ---
 
-My technology stack covers the following areas:
+This is my blog for any random stuff that comes into my mind.
 
-1. Electrical Engineering
-  * Power System Engineering
-  * Electric Machinery
-  * Control Systems
-  * Microelectronics
-  * Computer Architecture
-2. Multimedia Technology
-  * Image Processing
-  * Computer Vision
-  * Speech Recognition
-  * Video Coding
-  * Data Compression
-3. DevOps
-  * Linux Server Administration
-  * Shell Programming
+这是我随便乱写的博客。
