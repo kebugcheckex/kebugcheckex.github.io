@@ -4,7 +4,7 @@ category: android
 layout: post
 ---
 
-Sometimes developers needs to extract APK files from an Android phone, for the purpose of malware analysis, etc. This article describes how to do that with ADB tool.
+Sometimes developers needs to extract APK files from an Android phone, for the purpose of malware analysis, etc. This article describes how to do that with the ADB tool.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ With your phone connected through USB, run `adb devices` to make sure that the d
 
 ## Steps
 
-The first step is to get the package name. For example, if we want to extract the Twitter APK, run the following command
+The first step is to get the package name. For example, if you want to extract the Twitter APK, run the following command
 
 ```
 $ adb shell pm list packages | grep twitter
