@@ -1,9 +1,12 @@
 ---
 layout: post
 title: Useful Linux Command - tee
-date: 2021-08-02 12:34:56 -0700
-categories: linux
+category: linux
 ---
+
+This article introduces a useful Linux command `tee`.
+
+<!--more-->
 
 The function of `tee` command, as described in its man page, is
 
@@ -41,7 +44,7 @@ Again it does not work because `sudo` only applies to `wget` and it cannot reach
 wget -O- http://example.com/hostsfile | sudo tee -a /etc/hosts
 ```
 
-The `-a` option sets the output to be *appended*.
+The `-a` option sets the output to be _appended_.
 
 ### Vim needs root privilege
 
