@@ -1,7 +1,10 @@
 ---
-layout: post
 title: Useful Linux Command - tee
+layout: post
 category: linux
+tags:
+- linux
+- tee
 ---
 
 This article introduces a useful Linux command `tee`.

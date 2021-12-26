@@ -1,7 +1,9 @@
 ---
-layout: post
 title: Simple Video Editing with FFmpeg
+layout: post
 category: video
+tags:
+- ffmpeg
 ---
 
 Professional video editing is usually done in Adobe Premiere or Final Cut Pro. However, for simple video editing tasks, such as cutting one segment out of a long video, or cropping the frame to a smaller size, etc., it is not necessary to use these bulky software, let alone they are quite expensive. Fortunately, `ffmpeg` is a free but powerful tool to solve these video editing tasks.

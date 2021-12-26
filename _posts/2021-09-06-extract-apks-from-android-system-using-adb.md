@@ -2,6 +2,10 @@
 title: Extract APKs from Android System using ADB
 category: android
 layout: post
+tags:
+- android
+- adb
+- apk
 ---
 
 Sometimes developers needs to extract APK files from an Android phone, for the purpose of malware analysis, etc. This article describes how to do that with the ADB tool.

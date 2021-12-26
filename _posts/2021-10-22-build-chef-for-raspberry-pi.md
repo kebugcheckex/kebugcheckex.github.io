@@ -2,6 +2,11 @@
 title: Build Chef For Raspberry Pi
 category: devops
 layout: post
+tags:
+- raspberry-pi
+- chef
+- ruby
+- aarch64
 ---
 
 Chef is a configuration management software that can automate many DevOps tasks. It supports a variety of platforms. However, it does _not_ have official support for ARM based platforms, such as Raspberry Pi. This article describes how to compile Chef from source on a Raspberry Pi.

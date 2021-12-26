@@ -2,6 +2,9 @@
 title: Fourier Analysis Notes - Chapter 2 - 1
 layout: post
 category: math
+tags:
+- fourier-analysis
+- mathematics
 ---
 
 My notes when reading _Fourier Analysis An Introduction_ by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 1 Examples and formulation of the problem.

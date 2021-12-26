@@ -2,6 +2,10 @@
 title: 部落冲突游戏策略
 layout: post
 category: games
+tags:
+- clash-of-clans
+- games
+- chinese
 ---
 
 这篇文章总结了一些部落冲突游戏里常用的技巧。
