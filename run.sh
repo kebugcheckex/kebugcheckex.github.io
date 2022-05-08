@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-bundle exec jekyll serve
+set -x
+
+bundle exec jekyll serve -H 0.0.0.0
+
