@@ -30,11 +30,27 @@ The above command crops the input video from the `(left, top)` point using a rec
 ffmpeg -f concat -i files.txt output.mp4
 ```
 
-where `files.txt` contains the list of files to concatenate. The format is
+where `files.txt` contains the list of files to concatenate[^1]. The format is
 
 ```
 file '/path/to/file1'
 file '/path/to/file2'
 ```
 
-Reference: [Concatenating media files](https://trac.ffmpeg.org/wiki/Concatenate)
+## Time Related Operations
+
+### Cut Video By Time
+
+```
+ffmpeg \
+    -i input.mp4 \
+    -t 00:05:00 \
+    -c copy part1.mp4 \
+    -ss 00:05:00 \
+    -c copy part2.mp4
+```
+Option `-t` specifies the time length of the output video and option `-ss` specifies the start timestamp. Combining these two options can be used to split or cut video by time.
+
+## References
+
+[^1]: [Concatenating media files](https://trac.ffmpeg.org/wiki/Concatenate)

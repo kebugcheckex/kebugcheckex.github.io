@@ -9,6 +9,8 @@ math: true
 
 This problem has a pretty straightforward solution. Don't over-think about math tricks like multiplying all the numbers, etc. The most intuitive solution just works.
 
+<!--more-->
+
 The tricky part is actually the third paragraph of the problem description
 > Return the integer `divisors[i]` with the maximum divisibility score. If there is more than one integer with the maximum score, return the minimum of them.
 
