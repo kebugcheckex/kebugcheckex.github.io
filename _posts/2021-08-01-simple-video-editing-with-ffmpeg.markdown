@@ -22,6 +22,36 @@ ffmpeg -i input.mp4 -filter:v "crop=width:height:left:top" output.mp4
 
 The above command crops the input video from the `(left, top)` point using a rectangle with `width` and `height`.
 
+### Resize Video
+
+```
+ffmpeg \
+    -i input.mp4 \
+    -vf scale=1280:720 \
+    -fps_mode passthrough \
+    -c:v libx264 \
+    -b:v 1M \
+    -c:a copy \
+    output.mp4
+```
+
+With an NVIDIA GPU, you can significantely expedite the process
+```
+ffmpeg \
+    -hwaccel cuvid \
+    -hwaccel_output_format cuda \
+    -c:v h264_cuvid \
+    -resize 1280x720 \
+    -i input.mp4 \
+    -fps_mode passthrough \
+    -c:v h264_nvenc \
+    -c:a copy \
+    -b:v 1M \
+    output.mp4
+```
+
+Note that the code above requires the input to be encoded using H.264.
+
 ## File Operations
 
 ### Concatenating a series of files
