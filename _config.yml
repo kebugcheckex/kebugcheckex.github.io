@@ -26,7 +26,7 @@ location: Somewhere, North America
 date_format: "%Y-%m-%d"
 description: >- # this means to ignore newlines until "baseurl:"
   The blog of various random and fun stuff.
-google_analytics: G-SRH24D925G
+# google_analytics: G-SRH24D925G
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
