@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Fourier Analysis Notes - Chapter 2 - 1</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 1 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Fourier Analysis Notes - Chapter 2 - 1 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>My notes when reading <em>Fourier Analysis An Introduction</em> by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 1 Examples and formulation of the problem.</p>
+<h1 id="1-examples-and-formulation-of-the-problem">1 Examples and formulation of the problem</h1>
+<h2 id="riemann-integrable">Riemann Integrable</h2>
+<p>A real-valued function $$f$$ defined on [0, L] is <strong>Riemann integrable</strong> if it is<em>bounded</em>, and if for every $$\epsilon >0$$, there is a subdivision $$0=x_0<x_1<\cdots <x_{N-1}<x_N=L$$ of the interval $$[0,L]$$, so that if $$\mathcal{U}$$ and $$\mathcal{L}$$ are, respectively, the upper and lower sum of $$f$$ for this subdivision, namely</p>
+<p>$$
+\mathcal{U}=\sum_{j=1}^N[\sup_{x_{j-1}\leq x\leq x_j} f(x)](x_j-x_{j-1})
+$$</p>
+<p>and</p>
+<p>$$
+\mathcal{L}=\sum_{j=1}^N[\inf_{x_{j-1}\leq x\leq x_j} f(x)](x_j-x_{j-1})
+$$</p>
+<p>then we have $$\mathcal{U}-\mathcal{L}<\epsilon$$.</p>
+<h2 id="11-main-definitions-and-some-examples">1.1 Main definitions and some examples</h2>
+<h2 id="fourier-coefficients">Fourier Coefficients</h2>
+<p>If $$f$$ is an integrable function given on an interval $$[a,b]$$ of length $$L$$ (that is, $$b-a=L$$), then the n-th <strong>Fourier coeffcient</strong> of $$f$$ is defined as</p>
+<p>$$
+\hat{f}(n)=\frac{1}{L}\int_a^bf(x)e^{-2\pi inx/L}dx\mathrm{,}\quad n\in\mathbb{Z}
+$$</p>
+<p>The <strong>Fourier series</strong> of $$f$$ is given formally by</p>
+<p>$$
+\sum_{n=-\infty}^{\infty}\hat{f}(n)e^{2\pi inx/L}\mathrm{.}
+$$</p>
+<h2 id="dirichlet-kernel">Dirichlet kernel</h2>
+<p>The trigonometric polynomial defined for $$x\in [-\pi,\pi]$$ by</p>
+<p>$$
+D_N(x)=\sum_{n=-N}^N e^{inx}
+$$</p>
+<p>is called the <em>N-th</em> <strong>Dirichlet kernel</strong>. Its Fourier coefficients $$a_n$$ have the property that $$a_n=1$$ if $$\lvert n\rvert\leq N$$ and $$a_n=0$$ otherwise.</p>
+<h2 id="poisson-kernel">Poisson kernel</h2>
+<p>The function $$P_r(\theta)$$, called the <strong>Poisson kernel</strong>, is defined for $$\theta\in[-\pi,\pi]$$ and $$0\leq r<1$$ by the absolutely and uniformly convergent series</p>
+<p>$$
+P_r(\theta)=\sum_{n=-\infty}^\infty r^{\lvert n\rvert}e^{in\theta}\mathrm{.}
+$$</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/fourier-analysis">fourier-analysis</a>  <a class="category" href="http://localhost:1313/tags/mathematics">mathematics</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/" title="Fourier Analysis Notes - Chapter 2 - 2">Fourier Analysis Notes - Chapter 2 - 2</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2021-09-06-extract-apks-from-android-system-using-adb/" title="Extract APKs from Android System using ADB">Extract APKs from Android System using ADB</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

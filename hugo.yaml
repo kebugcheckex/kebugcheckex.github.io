@@ -1,0 +1,18 @@
+baseURL: https://example.org/
+languageCode: en-us
+title: The Unknown Space
+theme: Hugo-Octopress
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+            - - \[
+              - \]
+          inline:
+            - - $$
+              - $$
+        enable: true
+params:
+  math: false

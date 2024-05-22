@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Useful Linux Tips</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 2 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Useful Linux Tips 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This article contains various Linux tips. I will add more content from time to time. If this article grows too large, I may split it into several different articles with some categorization.</p>
+<h2 id="turn-onoff-usb-port-power-during-sleep">Turn on/off USB port power during sleep</h2>
+<p>Use kernel parameter <code>usbcore.autosuspend=-1</code>. Set this in <code>/etc/default/grub</code>. Append the parameter in <code>GRUB_CMDLINE_LINUX_DEFAULT</code>.</p>
+<h2 id="mount-iso-files">Mount ISO files</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span># mount -o loop /path/to/iso/file.iso /media/iso
+</span></span><span style="display:flex;"><span># umount /media/iso
+</span></span></code></pre></div><h2 id="install-rpm-packages-on-arch-linux">Install RPM packages on Arch Linux</h2>
+<p>Install <code>rpmextract</code> package and run <code>rpmextract.sh package-name.rpm</code>. Then install the generated package using <code>pacman -U</code>. More complicated situation use <code>alien</code> tool (need more research on this).</p>
+<h2 id="gnu-make-options">GNU make options</h2>
+<ul>
+<li><code>make -n -s -d</code> shows the detailed command of each build step</li>
+</ul>
+<h2 id="ip-command">IP command</h2>
+<ul>
+<li>Turn on/off interface <code>sudo ip link set &lt;interface&gt; up/down</code></li>
+</ul>
+<h2 id="zip-related">Zip related</h2>
+<ul>
+<li>Set compress level <code>zip -0 &lt;archive_name&gt;.zip &lt;file_or_directory&gt;</code></li>
+<li>Verify integrity <code>zip -T your-archive.zip</code> or <code>tar -Wf archive.tar</code></li>
+</ul>
+<h2 id="pipe-view">Pipe View</h2>
+<p>Use <code>pv</code> to show zip or tar progress</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ zip -r -0 -q - * | pv -lep -s <span style="color:#66d9ef">$(</span>du -sb | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> &gt; archive.zip
+</span></span><span style="display:flex;"><span>$ tar cf - . | pv -lep -s <span style="color:#66d9ef">$(</span>du -sb | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> | gzip &gt; archive.tar.gz
+</span></span></code></pre></div><h2 id="wifi-related">WiFi related</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span># rfkill unblock &lt;device&gt;
+</span></span></code></pre></div><h2 id="xpra">Xpra</h2>
+<ul>
+<li>Server side: <code>xpra start :DISPLAY_NUMBER --start-child=COMMAND</code></li>
+<li>Client side: <code>xpra attach ssh:USER@REMOTE_HOSTNAME:DISPLAY_NUMBER</code></li>
+</ul>
+<p>Use high number for display, e.g. 100</p>
+<h2 id="gnome">GNOME</h2>
+<ul>
+<li>Start GNOME control center (Settings) from command line <code>gnome-control-center</code></li>
+</ul>
+<h2 id="kde">KDE</h2>
+<ul>
+<li>Install KDE on Ubuntu <code>sudo apt install kde-plasma-desktop</code> (full packages) or <code>sudo apt install kde-standard</code> (smaller installation)</li>
+<li>Network Manager config UI: <code>plasma-nm</code></li>
+</ul>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/linux">linux</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2021-08-02-useful-linux-command-tee/" title="Useful Linux Command - tee">Useful Linux Command - tee</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

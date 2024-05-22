@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Useful Linux Command - tee</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 3 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Useful Linux Command - tee 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This article introduces a useful Linux command <code>tee</code>.</p>
+<p>The function of <code>tee</code> command, as described in its man page, is</p>
+<pre tabindex="0"><code>tee - read from standard input and write to standard output and files
+</code></pre><p>The first time I saw this command, I was wondering why I need that. If I want to check what was written into the file, just use <code>cat</code> to show the content of the file. Well, one obvious situation where you may want to use <code>tee</code> is to display the output of a command and save the output to file for later reference.</p>
+<p>In addition to this common usage, there are some special cases where <code>tee</code> can come in handy.</p>
+<h3 id="pipe-needs-root-privilege">Pipe needs root privilege</h3>
+<p>Sometimes you need to send the output to a file which requires root privilege. Say you are downloading some domain resolution entries for your organization&rsquo;s internal servers. You want to add them to the <code>/etc/hosts</code> file. Normally you issue a command like this</p>
+<pre tabindex="0"><code>wget -O- http://example.com/hostsfile &gt;&gt; /etc/hosts
+</code></pre><p>Unfortunately this does not work and you are told that</p>
+<pre tabindex="0"><code>bash: /etc/hosts: Permission denied
+</code></pre><p>because you don&rsquo;t have write permission to the hosts file. Now you will probably try this</p>
+<pre tabindex="0"><code>sudo wget -O- http://example.com/hostsfile  &gt;&gt; /etc/hosts
+</code></pre><p>Again it does not work because <code>sudo</code> only applies to <code>wget</code> and it cannot reach the redirection target. With <code>tee</code> you can achieve your goal with</p>
+<pre tabindex="0"><code>wget -O- http://example.com/hostsfile | sudo tee -a /etc/hosts
+</code></pre><p>The <code>-a</code> option sets the output to be <em>appended</em>.</p>
+<h3 id="vim-needs-root-privilege">Vim needs root privilege</h3>
+<p>Another situation is that people like me often forget to run <code>vim</code> with <code>sudo</code> to modify system config files. For example, you want to modify some configuration entries for PHP, with the following command</p>
+<pre tabindex="0"><code>vim /etc/php5/apache2/php.ini
+</code></pre><p>Once you&rsquo;ve done the changes, you start type <code>:wq</code> to save and exit the editor. Oops! Vim tells you that you don&rsquo;t have permission:</p>
+<pre tabindex="0"><code>E45: &#39;readonly&#39; option is set (add ! to override)
+</code></pre><p>Is it unfortunate that you have to close the editor without saving the changes and reopen it with <code>sudo</code> and redo all the changes? Absolutely not. What I used to do was to use <code>:save</code> command to save the current content to somewhere I have write permission and then use <code>sudo mv</code> to overwrite the actual config file I would like to change. But that seems a little bit too much typing. Now you can solve this problem in place with <code>tee</code>. Type the following command in Vim:</p>
+<pre tabindex="0"><code>:w !sudo tee %
+</code></pre><p>This basically tells vim to run a shell command <code>sudo tee</code> with the current file name <code>%</code>. Note that Vim will warn you that the file content has changed. This is because the overwrite is conducted outside Vim. But that&rsquo;s fine.</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/linux">linux</a>  <a class="category" href="http://localhost:1313/tags/tee">tee</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2023-01-01-useful-linux-tips/" title="Useful Linux Tips">Useful Linux Tips</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2022-04-06-turn-off-screen-in-linux-using-command-line/" title="Turn off screen in Linux using command line">Turn off screen in Linux using command line</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

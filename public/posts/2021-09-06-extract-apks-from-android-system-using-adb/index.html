@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Extract APKs from Android System using ADB</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 2 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Extract APKs from Android System using ADB 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>Sometimes developers needs to extract APK files from an Android phone, for the purpose of malware analysis, etc. This article describes how to do that with the ADB tool.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>In order to extract APK files from Android system, you&rsquo;ll need the <code>adb</code> tool. That comes with the Android SDK. If you don&rsquo;t have Android SDK installed, please refer to its 
+<a href="https://developer.android.com/studio/" target="_blank" rel="noopener">official documentation</a>.</p>
+<p>With your phone connected through USB, run <code>adb devices</code> to make sure that the device is recognized. You may also need to accept some permissions on your phone the first time you connect to it.</p>
+<h2 id="steps">Steps</h2>
+<p>The first step is to get the package name. For example, if you want to extract the Twitter APK, run the following command</p>
+<pre tabindex="0"><code>$ adb shell pm list packages | grep twitter
+package:com.twitter.android
+</code></pre><p>Now we have the package name as <code>com.twitter.android</code>. The next step is to get the file path,</p>
+<pre tabindex="0"><code>$ adb shell pm path com.twitter.android
+package:/data/app/com.twitter.android-gOLJpvoLzi9DRtrc99jlqA==/base.apk
+package:/data/app/com.twitter.android-gOLJpvoLzi9DRtrc99jlqA==/split_config.arm64_v8a.apk
+package:/data/app/com.twitter.android-gOLJpvoLzi9DRtrc99jlqA==/split_config.xxhdpi.apk
+package:/data/app/com.twitter.android-gOLJpvoLzi9DRtrc99jlqA==/split_config.fr.apk
+</code></pre><p>Note that you will likely find a few outputs, where the first one is <code>base.apk</code> while the other ones starts with <code>split_config</code>. This is an Android feature that aims to reduce APK file size by spliting parts of the app that targets different devices. To find out more about splitting apks, read the documentation at 
+<a href="https://developer.android.com/studio/build/configure-apk-splits" target="_blank" rel="noopener">Build Multiple APKs</a>. Depending on your needs, you may only need the base apk, or all of them. Use the following command to extract them</p>
+<pre tabindex="0"><code>$ adb pull /data/app/com.twitter.android-gOLJpvoLzi9DRtrc99jlqA==/base.apk path/to/place/the/apk
+</code></pre><p>Note that some shell environment may interpret the equal sign <code>=</code> in the path differently, causing weird errors. In that case you can quote the APK file path to ensure that it is parsed as a string literal.</p>
+<h2 id="reference">Reference</h2>
+<p>See original discussions on 
+<a href="https://stackoverflow.com/questions/4032960/how-do-i-get-an-apk-file-from-an-android-device" target="_blank" rel="noopener">Stackoverflow</a>.</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/android">android</a>  <a class="category" href="http://localhost:1313/tags/adb">adb</a>  <a class="category" href="http://localhost:1313/tags/apk">apk</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/" title="Fourier Analysis Notes - Chapter 2 - 1">Fourier Analysis Notes - Chapter 2 - 1</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2021-10-22-build-chef-for-raspberry-pi/" title="Build Chef For Raspberry Pi">Build Chef For Raspberry Pi</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

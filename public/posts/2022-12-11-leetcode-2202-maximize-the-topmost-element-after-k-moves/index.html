@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>LeetCode 2202 Maximize the Topmost Element After K Moves</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 3 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+    <a href="http://localhost:1313/posts/2022-12-11-leetcode-2202-maximize-the-topmost-element-after-k-moves/">LeetCode 2202 Maximize the Topmost Element After K Moves</a>
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This is an interesting question. Upon first look, it seems to be a stack-related question, as the operation of moving stuff from a pile resembles a stack data structure. However, it actually has nothing to do with stacks.</p>
+<p>Let&rsquo;s use our intuition to think about how to get the max element on the top. Ideally, we want to find the element with max value and remove everything above it. However, we have to make exact <em>k</em> moves. There are three cases:</p>
+<ol>
+<li><em>k</em> is smaller than the max value&rsquo;s index. This means that we won&rsquo;t be able to reach this element before exhausting the moves.</li>
+<li><em>k</em> is equal to the max value&rsquo;s index. This is the ideal case where removing <em>k</em> elements just make the max value on the top.</li>
+<li><em>k</em> is larger than max value&rsquo;s index. This case requires further investigation as we need to figure out how to consume the remaining moves and make sure the max value is still on the top.</li>
+</ol>
+<p>Let&rsquo;s talk about the third case above. Let _<em>i</em> be the index of the max value.</p>
+<ol>
+<li><strong>k - i = 1</strong> This means we have one extra step after exposing the max value. Unfortunately either moving away the top element or putting back another element will destroy our success.</li>
+<li><strong>k - i = 2</strong> In this case we can just remove the top element and put it back.</li>
+<li><strong>k - i = 3</strong> In this case we can remove two elements and put the max element back on top.</li>
+<li><strong>k - i &gt; 3</strong> With more than 3 moves remaining, we can combine the second and third case here to achieve the goal. For example, if k - i = 7, we can treat it as 2+2+3, which will make sure the max element remains on the top after all moves are done.</li>
+</ol>
+<p>So, what if the max element cannot be achieved? Just find the second largest element, the third largest element, until all elements are tested.</p>
+<p>Note that if there is only one element, we need to handle it slightly differently. In this case, when <em>k</em>  is an even number, we can remove and put back that element many times and end up with that single element still on the pile. Otherwise the pile will be empty after an odd number of moves.</p>
+<p>A sample code in C++ is shown below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maximumTop(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (nums.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> k <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> nums[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> maxValue <span style="color:#f92672">=</span> numeric_limits<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>min();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&gt;</span> k) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (k <span style="color:#f92672">-</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (nums[i] <span style="color:#f92672">&gt;</span> maxValue) {
+</span></span><span style="display:flex;"><span>                    maxValue <span style="color:#f92672">=</span> nums[i];
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> maxValue <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> maxValue : <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/leetcode">leetcode</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2023-03-24-leetcode-2644-find-the-maximum-divisibility-score/" title="LeetCode 2644 Find the Maximum Divisibility Score">LeetCode 2644 Find the Maximum Divisibility Score</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2021-12-27-fourier-analysis-notes-chapter-2-3/" title="Fourier Analysis Notes - Chapter 2 - 3">Fourier Analysis Notes - Chapter 2 - 3</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

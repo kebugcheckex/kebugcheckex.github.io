@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Build Chef For Raspberry Pi</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 5 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Build Chef For Raspberry Pi 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>Chef is a configuration management software that can automate many DevOps tasks. It supports a variety of platforms. However, it does <em>not</em> have official support for ARM based platforms, such as Raspberry Pi. This article describes how to compile Chef from source on a Raspberry Pi.</p>
+<hr>
+<p><strong>Note</strong> Chef now 
+<a href="https://www.chef.io/downloads/tools/infra-client?os=debian" target="_blank" rel="noopener">provides official packages</a> for aarch64.</p>
+<hr>
+<p>
+<a href="https://mattray.github.io/arm/" target="_blank" rel="noopener">This website</a> has a page that publishes 32-bit Chef packages for ARMv6 and ARMv7, including the instructions about how to build Chef from source. Now that Raspberry Pi 3 and 4 supports 64-bit computing. Based on 
+<a href="https://mattray.github.io/2019/05/18/chef-15-on-arm" target="_blank" rel="noopener">the page on mattray&rsquo;s website</a>, this article talks about how to build Chef for 64-bit ARM systems.</p>
+<p>I&rsquo;m running 64-bit Ubuntu 21.10 on my Raspberry Pi 4. The instructions here should work for other Ubuntu and Debian distros (including Raspberry Pi OS).</p>
+<hr>
+<p><strong>A Note on Shell Prompt Conventions</strong></p>
+<p>In this article, code blocks containing shell commands starts with some prompt strings. The conventions are</p>
+<ul>
+<li><code>#</code> means root shell. Normally you run commands as root by prepending <code>sudo</code>.</li>
+<li><code>$</code> means non-root user shell.</li>
+<li>Some lines explicitly includes the current working directory to avoid ambiguity.</li>
+</ul>
+<hr>
+<h1 id="install-dependencies">Install Dependencies</h1>
+<p>Before we start, first we need to install some dependencies, using the following command</p>
+<pre tabindex="0"><code># apt-get update
+# apt-get upgrade
+# apt-get install -y autoconf bison build-essential fakeroot git libreadline-dev libssl-dev zlib1g-dev
+</code></pre><h1 id="install-ruby">Install Ruby</h1>
+<p>We need to Ruby to build Chef and other tools, depending on the distro, you may or may not have the right version of Ruby in the package manager source. Therefore it is recommended to build Ruby from source, using 
+<a href="https://github.com/rbenv/rbenv" target="_blank" rel="noopener"><code>rbenv</code></a>. The following lines clones <code>rbenv</code> repo and compiles it. The last two lines intializes the current shell with <code>rbenv</code>.</p>
+<pre tabindex="0"><code>$ git clone --depth=1 https://github.com/rbenv/rbenv.git ~/.rbenv
+$ cd ~/.rbenv &amp;&amp; src/configure &amp;&amp; make -C src
+$ export PATH=&#34;$HOME/.rbenv/bin:$PATH&#34;
+$ eval &#34;$(rbenv init -)&#34;
+</code></pre><p>Using <code>rbenv</code>, we can build Ruby from source using <code>ruby-build</code>, a plugin of <code>rbenv</code>. As of November 2021, the latest stable version of Ruby is <code>2.7.4</code>. You can run <code>rbenv install --list</code> to get a list of current stable versions. It takes a few minutes to build Ruby from source. Use <code>--verbose</code> option to view the build commands output.</p>
+<pre tabindex="0"><code>[~/.rbenv]$ mkdir plugins
+$ git clone --depth=1 https://github.com/rbenv/ruby-build.git &#34;$(rbenv root)&#34;/plugins/ruby-build
+$ rbenv install --verbose 2.7.4
+$ rbenv global 2.7.4
+$ eval &#34;$(rbenv init -)&#34;
+</code></pre><p>At this point, we have a working Ruby installation. You can run <code>ruby --version</code> to verify that.</p>
+<h1 id="build-omnibus-toolchain">Build Omnibus Toolchain</h1>
+<p>According to 
+<a href="https://github.com/chef/omnibus" target="_blank" rel="noopener">its Github repo</a>, omnibus</p>
+<blockquote>
+<p>Easily create full-stack installers for your project across a variety of platforms.</p>
+</blockquote>
+<p>Omnibus can be used to create deb, rpm packages using a consistent set of tools.</p>
+<p>Using the following commands to clone the repo and install the gems needed for building omnibus toolchain.</p>
+<pre tabindex="0"><code>[~]$ git clone https://github.com/chef/omnibus-toolchain.git
+$ cd omnibus-toolchain
+$ bundle config set without &#39;development&#39;
+$ bundle install --path=.bundle
+</code></pre><p>Now we can use <code>omnibus</code> to build <code>omnibus-toolchain</code>. By default, <code>omnibus</code> will write to <code>/opt/omnibus-toolchain</code> and <code>/var/cache/omnibus</code>. We need to create those directory and make sure the curernt user owns them. Alternatively, you can make those directory writable by everyone (<code>chmod 777</code>) but it is not recommended.</p>
+<pre tabindex="0"><code># mkdir /opt/omnibus-toolchain
+# mkdir /var/cache/omnibus
+# chown $USER:$USER /opt/omnibus-toolchain
+# chown $USER:$USER /var/cache/omnibus
+[/home/user/omnibus-toolchain]$ bundle exec omnibus build omnibus-toolchain
+</code></pre><p>This process will take quite some time as it downloads dependencies and build everything from scratch. Once this is done, you&rsquo;ll find the deb package sitting in the <code>pkg</code> directory. The name encodes the date and time it was created. For example, mine is <code>omnibus-toolchain_2.1.15+20211021050910-1_arm64.deb</code>. You can keep it for future use. The content of the package is already stored in <code>/opt/omnibus-toolchain</code>. In fact, the package is built from the files in that directory. However, if you prefer a clean install, you can delete that directory and install the package.</p>
+<pre tabindex="0"><code># rm -rf /opt/omnibus-toolchain
+# dpkg -i omnibus-toolchain_2.1.15+20211021050910-1_arm64.deb
+</code></pre><h1 id="build-and-install-chef">Build and Install Chef</h1>
+<p>Finally, we have all the tools ready to build Chef. Clone the Chef repo and install the necessary gems. As of now, the latest version is <code>17.7.20</code>. By default, the main branch has the latest version.</p>
+<pre tabindex="0"><code>[~]$ git clone --depth=1 https://github.com/chef/chef.git
+$ cd chef/omnibus
+$ bundle install --path=.bundle
+</code></pre><p>Similar to <code>omnibus-toolchain</code>, we need to create the directory that will be used during the build. Then we can kick off the build.</p>
+<pre tabindex="0"><code># mkdir /opt/chef
+# chown $USER:$USER /opt/chef
+$ bundle exec omnibus build chef
+</code></pre><p>Again, this will take some time. Once finished, you&rsquo;ll find the deb package in <code>chef/omnibus/pkg/</code> directory, like <code>chef_17.7.11+20211021063545-1_arm64.deb</code>. Just like <code>omnibus-toolchain</code>, the files in this package already exist in <code>/opt/chef</code>. You can delete the directory and perform a clean install using the package.</p>
+<p>Hooray! Chef is installed.</p>
+<h1 id="appendix">Appendix</h1>
+<p>This article is based on 
+<a href="https://mattray.github.io/2019/05/18/chef-15-on-arm" target="_blank" rel="noopener">Matt Ray&rsquo;s blog article</a> <em>Building Chef 15.0.300 for CentOS, Debian and Raspbian on 32-bit ARM</em>, with some modifications.</p>
+<ul>
+<li>Omitted the creation and usage of the <code>omnibus</code> user part, as I believe it is not necessary for one-off build.</li>
+<li>Skipped the patches as they have already been merged into the main branch.</li>
+<li>Use <code>bundle config set without 'development'</code> since <code>--without</code> option is deprecated.</li>
+<li>Added <code>--depth=1</code> to all <code>git clone</code> commands to save some time and bandwidth.</li>
+</ul>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/raspberry-pi">raspberry-pi</a>  <a class="category" href="http://localhost:1313/tags/chef">chef</a>  <a class="category" href="http://localhost:1313/tags/ruby">ruby</a>  <a class="category" href="http://localhost:1313/tags/aarch64">aarch64</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2021-09-06-extract-apks-from-android-system-using-adb/" title="Extract APKs from Android System using ADB">Extract APKs from Android System using ADB</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2022-02-12-android-wifi-issue-due-to-ipv6-dns/" title="Android WiFi Issue Due to IPv6 DNS">Android WiFi Issue Due to IPv6 DNS</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

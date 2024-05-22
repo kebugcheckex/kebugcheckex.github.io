@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Simple Video Editing with FFmpeg</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 2 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Simple Video Editing with FFmpeg 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>Professional video editing is usually done in Adobe Premiere or Final Cut Pro. However, for simple video editing tasks, such as cutting one segment out of a long video, or cropping the frame to a smaller size, etc., it is not necessary to use these bulky software, let alone they are quite expensive. Fortunately, <code>ffmpeg</code> is a free but powerful tool to solve these video editing tasks.</p>
+<p>This article serves as a cookbook for frequently used video editing tasks using <code>ffmpeg</code>. It will be updated as new recipes emerges.</p>
+<h2 id="video-size-modification">Video Size Modification</h2>
+<h3 id="cropping-frame">Cropping frame</h3>
+<pre tabindex="0"><code>ffmpeg -i input.mp4 -filter:v &#34;crop=width:height:left:top&#34; output.mp4
+</code></pre><p>The above command crops the input video from the <code>(left, top)</code> point using a rectangle with <code>width</code> and <code>height</code>.</p>
+<h3 id="resize-video">Resize Video</h3>
+<pre tabindex="0"><code>ffmpeg \
+    -i input.mp4 \
+    -vf scale=1280:720 \
+    -fps_mode passthrough \
+    -c:v libx264 \
+    -b:v 1M \
+    -c:a copy \
+    output.mp4
+</code></pre><p>With an NVIDIA GPU, you can significantely expedite the process</p>
+<pre tabindex="0"><code>ffmpeg \
+    -hwaccel cuvid \
+    -hwaccel_output_format cuda \
+    -c:v h264_cuvid \
+    -resize 1280x720 \
+    -i input.mp4 \
+    -fps_mode passthrough \
+    -c:v h264_nvenc \
+    -c:a copy \
+    -b:v 1M \
+    output.mp4
+</code></pre><p>Note that the code above requires the input to be encoded using H.264.</p>
+<h2 id="file-operations">File Operations</h2>
+<h3 id="concatenating-a-series-of-files">Concatenating a series of files</h3>
+<pre tabindex="0"><code>ffmpeg -f concat -i files.txt output.mp4
+</code></pre><p>where <code>files.txt</code> contains the list of files to concatenate<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. The format is</p>
+<pre tabindex="0"><code>file &#39;/path/to/file1&#39;
+file &#39;/path/to/file2&#39;
+</code></pre><h2 id="time-related-operations">Time Related Operations</h2>
+<h3 id="cut-video-by-time">Cut Video By Time</h3>
+<pre tabindex="0"><code>ffmpeg \
+    -i input.mp4 \
+    -t 00:05:00 \
+    -c copy part1.mp4 \
+    -ss 00:05:00 \
+    -c copy part2.mp4
+</code></pre><p>Option <code>-t</code> specifies the time length of the output video and option <code>-ss</code> specifies the start timestamp. Combining these two options can be used to split or cut video by time.</p>
+<h2 id="references">References</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>
+<a href="https://trac.ffmpeg.org/wiki/Concatenate" target="_blank" rel="noopener">Concatenating media files</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/ffmpeg">ffmpeg</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2022-04-06-turn-off-screen-in-linux-using-command-line/" title="Turn off screen in Linux using command line">Turn off screen in Linux using command line</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2022-12-31-leetcode-good-explanation-list/" title="LeetCode Good Explanation List">LeetCode Good Explanation List</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

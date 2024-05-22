@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Unknown Space</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on The Unknown Space</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Apr 2024 20:30:16 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>部落冲突游戏策略</title>
+      <link>http://localhost:1313/posts/2021-07-01-clash-of-clans-strategies-zh/</link>
+      <pubDate>Thu, 01 Jul 2021 08:34:24 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2021-07-01-clash-of-clans-strategies-zh/</guid>
+      <description>这篇文章总结了一些部落冲突游戏里常用的技巧。 资源 实验室 实验室正在研发科技的时候是可以升级实验室的，科技研发速度会减半。 部落城堡 从部落城堡、月</description>
+    </item>
+    <item>
+      <title>2023年高考全国甲卷理科数学</title>
+      <link>http://localhost:1313/posts/2023-06-10-2023-gaokao-quanguo-like-shuxue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2023-06-10-2023-gaokao-quanguo-like-shuxue/</guid>
+      <description>&lt;p&gt;本文简略探讨一下 2023 年高考全国甲卷理科数学的部分试题。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Android WiFi Issue Due to IPv6 DNS</title>
+      <link>http://localhost:1313/posts/2022-02-12-android-wifi-issue-due-to-ipv6-dns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-02-12-android-wifi-issue-due-to-ipv6-dns/</guid>
+      <description>&lt;p&gt;This article documents my trobleshooting experience to fix a WiFi issue on my Android phone.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Build Chef For Raspberry Pi</title>
+      <link>http://localhost:1313/posts/2021-10-22-build-chef-for-raspberry-pi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-10-22-build-chef-for-raspberry-pi/</guid>
+      <description>&lt;p&gt;Chef is a configuration management software that can automate many DevOps tasks. It supports a variety of platforms. However, it does &lt;em&gt;not&lt;/em&gt; have official support for ARM based platforms, such as Raspberry Pi. This article describes how to compile Chef from source on a Raspberry Pi.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Extract APKs from Android System using ADB</title>
+      <link>http://localhost:1313/posts/2021-09-06-extract-apks-from-android-system-using-adb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-09-06-extract-apks-from-android-system-using-adb/</guid>
+      <description>&lt;p&gt;Sometimes developers needs to extract APK files from an Android phone, for the purpose of malware analysis, etc. This article describes how to do that with the ADB tool.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fourier Analysis Notes - Chapter 2 - 1</title>
+      <link>http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</guid>
+      <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 1 Examples and formulation of the problem.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fourier Analysis Notes - Chapter 2 - 2</title>
+      <link>http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</guid>
+      <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 2 Uniqueness of Fourier series.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fourier Analysis Notes - Chapter 2 - 3</title>
+      <link>http://localhost:1313/posts/2021-12-27-fourier-analysis-notes-chapter-2-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-12-27-fourier-analysis-notes-chapter-2-3/</guid>
+      <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 3 Convolutions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LeetCode 2202 Maximize the Topmost Element After K Moves</title>
+      <link>http://localhost:1313/posts/2022-12-11-leetcode-2202-maximize-the-topmost-element-after-k-moves/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-12-11-leetcode-2202-maximize-the-topmost-element-after-k-moves/</guid>
+      <description>&lt;p&gt;This is an interesting question. Upon first look, it seems to be a stack-related question, as the operation of moving stuff from a pile resembles a stack data structure. However, it actually has nothing to do with stacks.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LeetCode 2644 Find the Maximum Divisibility Score</title>
+      <link>http://localhost:1313/posts/2023-03-24-leetcode-2644-find-the-maximum-divisibility-score/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2023-03-24-leetcode-2644-find-the-maximum-divisibility-score/</guid>
+      <description>&lt;p&gt;This problem has a pretty straightforward solution. Don&amp;rsquo;t over-think about math tricks like multiplying all the numbers, etc. The most intuitive solution just works.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LeetCode Good Explanation List</title>
+      <link>http://localhost:1313/posts/2022-12-31-leetcode-good-explanation-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-12-31-leetcode-good-explanation-list/</guid>
+      <description>&lt;p&gt;This post contains a list of good explanations of LeetCode questions found in various places.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Simple Video Editing with FFmpeg</title>
+      <link>http://localhost:1313/posts/2021-08-01-simple-video-editing-with-ffmpeg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-08-01-simple-video-editing-with-ffmpeg/</guid>
+      <description>&lt;p&gt;Professional video editing is usually done in Adobe Premiere or Final Cut Pro. However, for simple video editing tasks, such as cutting one segment out of a long video, or cropping the frame to a smaller size, etc., it is not necessary to use these bulky software, let alone they are quite expensive. Fortunately, &lt;code&gt;ffmpeg&lt;/code&gt; is a free but powerful tool to solve these video editing tasks.&lt;/p&gt;&#xA;&lt;p&gt;This article serves as a cookbook for frequently used video editing tasks using &lt;code&gt;ffmpeg&lt;/code&gt;. It will be updated as new recipes emerges.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Turn off screen in Linux using command line</title>
+      <link>http://localhost:1313/posts/2022-04-06-turn-off-screen-in-linux-using-command-line/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-04-06-turn-off-screen-in-linux-using-command-line/</guid>
+      <description>&lt;p&gt;This article explains how to turn off screen in Linux using command line.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Useful Linux Command - tee</title>
+      <link>http://localhost:1313/posts/2021-08-02-useful-linux-command-tee/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-08-02-useful-linux-command-tee/</guid>
+      <description>&lt;p&gt;This article introduces a useful Linux command &lt;code&gt;tee&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Useful Linux Tips</title>
+      <link>http://localhost:1313/posts/2023-01-01-useful-linux-tips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2023-01-01-useful-linux-tips/</guid>
+      <description>&lt;p&gt;This article contains various Linux tips. I will add more content from time to time. If this article grows too large, I may split it into several different articles with some categorization.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

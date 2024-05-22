@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Android WiFi Issue Due to IPv6 DNS</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 2 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Android WiFi Issue Due to IPv6 DNS 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This article documents my trobleshooting experience to fix a WiFi issue on my Android phone.</p>
+<p>Today my Google Pixel 6 suddenly hadissues with WiFi connection. The symptom is that it keeps disconnecting from WiFi, then reconnects, and after a few seconds, disconnects again. I didn&rsquo;t make any changes to the phone&rsquo;s network settings so initially I could not associate this issue with any recent changes. I tried to restart the phone, reset network configs, etc. None of them solved the issue. Logcat shows a few entries related to WiFi but not very useful for troubleshooting.</p>
+<p>I use OpenWRT on my router. There are some custom configs, e.g. DHCP offers local DNS server over public DNS server, for my home networking usage. I realized that recently I added a local IPv6 DNS server address in the DHCP config so that all the connected device will resolve domain names to my local DNS server if they are using IPv6. This works fine until I rebooted my DNS server for regular maintenance. I didn&rsquo;t set static IPv6 address for my DNS server so the IPv6 address changed. After removing the IPv6 DNS from DHCP config, my Pixel 6 was able to connect to WiFi normally again.</p>
+<p>Without digging into Android&rsquo;s source code, my theory is that Android tries to resolve some well-known domains (e.g. google.com) upon connecting to the WiFi network. If that fails, it will consider this network not usable and disconnects from it. Although this doesn&rsquo;t explain that why my other phones (e.g. Pixel 2 running Android 11, Xiaomi Mi 8 running Android 10) didn&rsquo;t have this issue. I don&rsquo;t know why Android at least try the IPv4 DNS server before disconnecting from WiFi.</p>
+<p>Anyways, problem is solve. If you ever run into the same issue, try this solution.</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/android">android</a>  <a class="category" href="http://localhost:1313/tags/wifi">wifi</a>  <a class="category" href="http://localhost:1313/tags/networking">networking</a>  <a class="category" href="http://localhost:1313/tags/ipv6">ipv6</a>  <a class="category" href="http://localhost:1313/tags/dns">dns</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2021-10-22-build-chef-for-raspberry-pi/" title="Build Chef For Raspberry Pi">Build Chef For Raspberry Pi</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2023-06-10-2023-gaokao-quanguo-like-shuxue/" title="2023年高考全国甲卷理科数学">2023年高考全国甲卷理科数学</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

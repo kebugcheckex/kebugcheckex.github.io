@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chef on The Unknown Space</title>
+    <link>http://localhost:1313/tags/chef/</link>
+    <description>Recent content in Chef on The Unknown Space</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/chef/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build Chef For Raspberry Pi</title>
+      <link>http://localhost:1313/posts/2021-10-22-build-chef-for-raspberry-pi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-10-22-build-chef-for-raspberry-pi/</guid>
+      <description>&lt;p&gt;Chef is a configuration management software that can automate many DevOps tasks. It supports a variety of platforms. However, it does &lt;em&gt;not&lt;/em&gt; have official support for ARM based platforms, such as Raspberry Pi. This article describes how to compile Chef from source on a Raspberry Pi.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Turn off screen in Linux using command line</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 1 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Turn off screen in Linux using command line 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This article explains how to turn off screen in Linux using command line.</p>
+<h2 id="in-tty-mode">In TTY mode</h2>
+<p>If you have physical access to the machine, run the following command</p>
+<pre tabindex="0"><code>$ setterm --blank 1
+</code></pre><p>This will turn off the screen after 1 minute wihout activity.</p>
+<p>If you only have remote access to the machine (e.g. through SSH), you can do the following</p>
+<pre tabindex="0"><code>$ setterm -term linux -blank &lt; /dev/tty1
+</code></pre><p>where <code>tty1</code> should be replaced by the actual tty you want to turn off. Use <code>who</code> command to figure out which tty is the one that is attached to the monitor.</p>
+<h2 id="in-gui-mode">In GUI mode</h2>
+<p><em>To be continued&hellip;</em></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<a href="https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line" target="_blank" rel="noopener">https://askubuntu.com/questions/62858/turn-off-monitor-using-command-line</a></li>
+</ul>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://localhost:1313/tags/linux">linux</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2021-08-02-useful-linux-command-tee/" title="Useful Linux Command - tee">Useful Linux Command - tee</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2021-08-01-simple-video-editing-with-ffmpeg/" title="Simple Video Editing with FFmpeg">Simple Video Editing with FFmpeg</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

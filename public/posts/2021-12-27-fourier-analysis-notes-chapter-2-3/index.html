@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Fourier Analysis Notes - Chapter 2 - 3</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  
+    <link href="http://localhost:1313/favicon.png" rel="icon">
+  
+
+  
+  
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  
+  <meta name="generator" content="Hugo 0.125.3">
+
+  
+  
+
+  
+  
+
+
+
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://localhost:1313/">The Unknown Space</a></h1>
+    <h2></h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Jan 1, 0001
+     - 1 minute read 
+    
+
+    
+  </p>
+  <h1 class="entry-title">
+     Fourier Analysis Notes - Chapter 2 - 3 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>My notes when reading <em>Fourier Analysis An Introduction</em> by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 3 Convolutions.</p>
+<h1 id="3-convolutions">3 Convolutions</h1>
+<p>Given two $$2\pi$$-periodic integrable functions $$f$$ and $$g$$ on $$\mathbb{R}$$, we define their <strong>convolution</strong> $$f*g$$ on $$[-\pi,\pi]$$ by</p>
+<p>$$
+(f*g)(x)=\frac{1}{2\pi}\int_{-\pi}^\pi f(y)g(x-y)dy\mathrm{.}
+$$</p>
+<p><strong>Proposition 3.1</strong> <em>Suppose that $$f$$, $$g$$, and $$h$$ are $$2\pi$$-periodic integrable functions. Then:</em></p>
+<ol>
+<li>$$f*(g+h)=f*g+f*h$$.</li>
+<li>$$(cf)*g=c(f*g)=f*(cg)$$ for any $$c\in\mathbb{C}$$.</li>
+<li>$$f*g=g*f$$.</li>
+<li>$$(f*g)*h=f*(g*h)$$.</li>
+<li>$$f*g$$ is continuous.</li>
+<li>$$\hat{f*g}(n)=\hat{f}(n)\hat{g}(n)$$<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</li>
+</ol>
+<p><strong>Lemmar 3.2</strong> <em>Suppose $$f$$ is integrable on the circle and bounded by $$B$$. Then there exists a sequence $$\{f_k\}^\infty_{k=1}$$ of continuous functions on the circle so that</em></p>
+<p>$$
+\sup_{x\in[-\pi,\pi]}\lvert f_k (x)\rvert\leq B\quad\mathrm{for\:all}\:k=1,2,\dots\mathrm{,}
+$$</p>
+<p>and</p>
+<p>$$
+\int_{-\pi}^\pi \lvert f(x)-f_k (x)\rvert dx\to 0\quad as\: k\to\infty\mathrm{.}
+$$</p>
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>For some reason MathJax doesn&rsquo;t render the hat symbol over the whole $$f*g$$ part. This proposition means the Fourier series of the convolution of $$f$$ and $$g$$ equals to the product of the Fourier series of $$f$$ and $$g$$.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn"></span></span>
+    
+    <time>Jan 1, 0001</time>
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://localhost:1313/posts/2022-12-11-leetcode-2202-maximize-the-topmost-element-after-k-moves/" title="LeetCode 2202 Maximize the Topmost Element After K Moves">LeetCode 2202 Maximize the Topmost Element After K Moves</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/" title="Fourier Analysis Notes - Chapter 2 - 2">Fourier Analysis Notes - Chapter 2 - 2</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+
+    <p>
+      
+    </p>
+  </section>
+
+  
+  
+
+
+
+<ul class="sidebar-nav">
+  <li class="sidebar-nav-item">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  
+  
+  </li>
+</ul>
+
+  
+
+  
+
+  
+  
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2024  - <a href="http://localhost:1313/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io" rel="noopener noreferrer">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/" rel="noopener noreferrer">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+
+
+
+    
+    
+    
+
+    
+  
+
+
+  </body>
+</html>
+

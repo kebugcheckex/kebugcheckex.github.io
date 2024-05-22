@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematics on The Unknown Space</title>
+    <link>http://localhost:1313/tags/mathematics/</link>
+    <description>Recent content in Mathematics on The Unknown Space</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023年高考全国甲卷理科数学</title>
+      <link>http://localhost:1313/posts/2023-06-10-2023-gaokao-quanguo-like-shuxue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2023-06-10-2023-gaokao-quanguo-like-shuxue/</guid>
+      <description>&lt;p&gt;本文简略探讨一下 2023 年高考全国甲卷理科数学的部分试题。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fourier Analysis Notes - Chapter 2 - 1</title>
+      <link>http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</guid>
+      <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 1 Examples and formulation of the problem.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Fourier Analysis Notes - Chapter 2 - 2</title>
+      <link>http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</guid>
+      <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 2 Uniqueness of Fourier series.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
