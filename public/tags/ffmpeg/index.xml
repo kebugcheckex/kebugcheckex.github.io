@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ffmpeg on The Unknown Space</title>
-    <link>http://localhost:1313/tags/ffmpeg/</link>
+    <link>https://kebugcheckex.github.io/tags/ffmpeg/</link>
     <description>Recent content in Ffmpeg on The Unknown Space</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kebugcheckex.github.io/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple Video Editing with FFmpeg</title>
-      <link>http://localhost:1313/posts/2021-08-01-simple-video-editing-with-ffmpeg/</link>
+      <link>https://kebugcheckex.github.io/posts/2021-08-01-simple-video-editing-with-ffmpeg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2021-08-01-simple-video-editing-with-ffmpeg/</guid>
+      <guid>https://kebugcheckex.github.io/posts/2021-08-01-simple-video-editing-with-ffmpeg/</guid>
       <description>&lt;p&gt;Professional video editing is usually done in Adobe Premiere or Final Cut Pro. However, for simple video editing tasks, such as cutting one segment out of a long video, or cropping the frame to a smaller size, etc., it is not necessary to use these bulky software, let alone they are quite expensive. Fortunately, &lt;code&gt;ffmpeg&lt;/code&gt; is a free but powerful tool to solve these video editing tasks.&lt;/p&gt;&#xA;&lt;p&gt;This article serves as a cookbook for frequently used video editing tasks using &lt;code&gt;ffmpeg&lt;/code&gt;. It will be updated as new recipes emerges.&lt;/p&gt;</description>
     </item>
   </channel>

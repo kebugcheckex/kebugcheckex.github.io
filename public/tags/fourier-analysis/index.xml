@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fourier-Analysis on The Unknown Space</title>
-    <link>http://localhost:1313/tags/fourier-analysis/</link>
+    <link>https://kebugcheckex.github.io/tags/fourier-analysis/</link>
     <description>Recent content in Fourier-Analysis on The Unknown Space</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/tags/fourier-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kebugcheckex.github.io/tags/fourier-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fourier Analysis Notes - Chapter 2 - 1</title>
-      <link>http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</link>
+      <link>https://kebugcheckex.github.io/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</guid>
+      <guid>https://kebugcheckex.github.io/posts/2021-12-24-fourier-analysis-notes-chapter-2-1/</guid>
       <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 1 Examples and formulation of the problem.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fourier Analysis Notes - Chapter 2 - 2</title>
-      <link>http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</link>
+      <link>https://kebugcheckex.github.io/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</guid>
+      <guid>https://kebugcheckex.github.io/posts/2021-12-25-fourier-analysis-notes-chapter-2-2/</guid>
       <description>&lt;p&gt;My notes when reading &lt;em&gt;Fourier Analysis An Introduction&lt;/em&gt; by Stein and Shakarchi. This is for chapter 2 Basic Properties of Fourier Series, section 2 Uniqueness of Fourier series.&lt;/p&gt;</description>
     </item>
   </channel>
